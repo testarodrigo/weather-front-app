@@ -11,9 +11,6 @@ import { switchMap, distinctUntilChanged, finalize } from "rxjs/operators";
 })
 export class WeatherComponent implements OnInit {
   @Input()
-  id: string;
-
-  @Input()
   city: Observable<string>;
 
   loading = false;
