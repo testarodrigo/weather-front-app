@@ -1,0 +1,27 @@
+<form class="autocomplete-form">
+  <mat-form-field>
+    <input
+      #destinationInput
+      matInput
+      placeholder="Busque una ciudad"
+      aria-label="Ciudades"
+      [matAutocomplete]="auto"
+      [formControl]="form"
+    />
+    <mat-autocomplete
+      #auto="matAutocomplete"
+      (optionSelected)="selectedDestination($event)"
+    >
+      <mat-option
+        [disabled]="option.id === 'EMPTY'"
+        *ngFor="let option of suggestions | async"
+        [value]="option"
+      >
+        <span
+          class="suggestion"
+          [innerHTML]="option?.highlight || option.name | sanitizeHtml"
+        ></span>
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</form>

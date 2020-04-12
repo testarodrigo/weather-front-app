@@ -1,0 +1,21 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-sm-12">
+      <autocomplete-component
+        (valueChange)="showCityWeather($event)"
+      ></autocomplete-component>
+    </div>
+    <div class="col-sm-12">
+      <div class="row justify-content-center">
+        <div class="col-sm-6">
+          <weather-component
+            [city]="currentCity$"
+            *ngIf="currentCity$"
+          ></weather-component>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <router-outlet></router-outlet>
+</div>
