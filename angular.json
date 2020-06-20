@@ -25,11 +25,17 @@
             "aot": true,
             "assets": [
               "src/frontend/favicon.ico",
-              "src/frontend/assets"
+              "src/frontend/assets",
+              {
+                "glob": "**/*",
+                "input": "./node_modules/leaflet/dist/images",
+                "output": "assets/"
+              }
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
-              "src/frontend/styles.scss"
+              "src/frontend/styles.scss",
+              "./node_modules/leaflet/dist/leaflet.css"
             ],
             "scripts": []
           },
@@ -61,6 +67,19 @@
                   "maximumError": "10kb"
                 }
               ]
+            },
+            "dev-server": {
+              "budgets": [
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
+                }
+              ],
+              "deployUrl": "/weather/assets/",
+              "baseHref": "/",
+              "index": {
+                "input": "src/frontend/index.html"
+              }
             }
           }
         },
@@ -88,10 +107,7 @@
             "polyfills": "src/frontend/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
-            "assets": [
-              "src/frontend/favicon.ico",
-              "src/frontend/assets"
-            ],
+            "assets": ["src/frontend/favicon.ico", "src/frontend/assets"],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/frontend/styles.scss"
@@ -107,9 +123,7 @@
               "tsconfig.spec.json",
               "e2e/tsconfig.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "e2e": {

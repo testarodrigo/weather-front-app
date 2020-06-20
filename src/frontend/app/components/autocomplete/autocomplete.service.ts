@@ -6,13 +6,14 @@ import { catchError, map } from "rxjs/operators";
 
 @Injectable()
 export class AutocompleteService {
-  private API_SUGGESTION_URL = "${here_goes_api_url}";
+  private API_SUGGESTION_URL =
+    "http://localhost:4200/weather/api/autocomplete/cities";
 
   constructor(private httpClient: HttpClient) {}
 
   getCities(hint: string): Observable<Suggestion[]> {
     return this.httpClient
-      .get<Suggestion[]>(`${this.API_SUGGESTION_URL}${hint}`)
+      .get<Suggestion[]>(`${this.API_SUGGESTION_URL}?hint=${hint}`)
       .pipe(
         handleSuggestions,
         catchError(handleNotFound),
